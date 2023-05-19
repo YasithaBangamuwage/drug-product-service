@@ -13,6 +13,9 @@ class MockDrugDataSource : DrugDataSource {
         Drug("3", "Vitamin c", "mg", true)
     )
 
-    override fun retrieveDrugs(): Collection<Drug> = drugs
+    override fun retrieveDrugs(): Collection<Drug> = this.drugs
+
+    override fun retrieveDrug(drugId: String): Drug = drugs.firstOrNull { it.id == drugId }
+        ?: throw NoSuchElementException("Could not found the drug with id $drugId")
 
 }

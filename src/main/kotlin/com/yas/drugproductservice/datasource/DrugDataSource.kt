@@ -5,4 +5,5 @@ import com.yas.drugproductservice.model.Drug
 interface DrugDataSource {
 
     fun retrieveDrugs(): Collection<Drug>
+    fun retrieveDrug(drugId : String): Drug
 }

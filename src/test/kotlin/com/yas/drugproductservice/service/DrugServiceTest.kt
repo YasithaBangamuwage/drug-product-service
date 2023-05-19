@@ -1,7 +1,6 @@
 package com.yas.drugproductservice.service
 
 import com.yas.drugproductservice.datasource.DrugDataSource
-import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
 import org.junit.jupiter.api.Test
