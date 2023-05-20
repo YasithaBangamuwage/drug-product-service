@@ -8,4 +8,5 @@ import org.springframework.stereotype.Service
 class DrugService(val dataSource : DrugDataSource) {
     fun getDrugs() : Collection<Drug> = dataSource.retrieveDrugs()
     fun getDrug(drugId: String): Drug =  dataSource.retrieveDrug(drugId)
+    fun addDrug(newDrug: Drug): Drug = dataSource.createDrug(newDrug)
 }

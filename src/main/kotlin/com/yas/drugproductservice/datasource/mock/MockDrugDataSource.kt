@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository
 @Repository
 class MockDrugDataSource : DrugDataSource {
 
-    val drugs = listOf(
+    val drugs = mutableListOf(
         Drug("1", "Panadol", "ml", true),
         Drug("2", "Brufen", "g", true),
         Drug("3", "Vitamin c", "mg", true)
@@ -17,5 +17,16 @@ class MockDrugDataSource : DrugDataSource {
 
     override fun retrieveDrug(drugId: String): Drug = drugs.firstOrNull { it.id == drugId }
         ?: throw NoSuchElementException("Could not found the drug with id $drugId")
+
+    override fun createDrug(newDrug: Drug): Drug {
+
+        if (drugs.any { it.id == newDrug.id }) {
+            throw IllegalArgumentException("Drug with id ${newDrug.id} already exists")
+        } else {
+            drugs.add(newDrug)
+        }
+
+        return newDrug
+    }
 
 }

@@ -6,4 +6,5 @@ interface DrugDataSource {
 
     fun retrieveDrugs(): Collection<Drug>
     fun retrieveDrug(drugId : String): Drug
+    fun createDrug(newDrug: Drug): Drug
 }
