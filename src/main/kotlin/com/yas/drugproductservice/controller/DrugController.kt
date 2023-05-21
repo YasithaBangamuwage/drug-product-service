@@ -4,8 +4,10 @@ import com.yas.drugproductservice.model.Drug
 import com.yas.drugproductservice.service.DrugService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PatchMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
@@ -31,7 +33,14 @@ class DrugController(private val service: DrugService) {
     @GetMapping("/{drugId}")
     fun getDrug(@PathVariable drugId: String): Drug = service.getDrug(drugId)
 
-    @PostMapping()
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     fun addDrug(@RequestBody newDrug: Drug): Drug = service.addDrug(newDrug)
+
+    @PatchMapping
+    fun updateDrug(@RequestBody updateDrug : Drug) = service.updateDrug(updateDrug)
+
+    @DeleteMapping("/{drugId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    fun deleteDrug(@PathVariable drugId : String) : Unit = service.deleteDrug(drugId)
 }

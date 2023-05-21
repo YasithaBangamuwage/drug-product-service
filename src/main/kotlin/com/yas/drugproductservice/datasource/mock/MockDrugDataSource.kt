@@ -29,4 +29,18 @@ class MockDrugDataSource : DrugDataSource {
         return newDrug
     }
 
+    override fun updateDrug(updateDrug: Drug): Drug {
+        val currentDrug = drugs.firstOrNull { it.id == updateDrug.id }
+            ?: NoSuchElementException("Could not found the drug with id ${updateDrug.id}")
+        drugs.remove(currentDrug)
+        drugs.add(updateDrug)
+        return updateDrug
+    }
+
+    override fun deleteDrug(drugId: String) {
+        val removingDrug = drugs.firstOrNull { it.id == drugId }
+            ?: NoSuchElementException("Could not found the drug with id $drugId")
+        drugs.remove(removingDrug)
+    }
+
 }
