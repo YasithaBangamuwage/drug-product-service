@@ -4,7 +4,7 @@ import com.yas.drugproductservice.datasource.DrugDataSource
 import com.yas.drugproductservice.model.Drug
 import org.springframework.stereotype.Repository
 
-@Repository
+@Repository("mock")
 class MockDrugDataSource : DrugDataSource {
 
     val drugs = mutableListOf(

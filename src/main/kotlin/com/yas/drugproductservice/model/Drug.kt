@@ -1,4 +1,9 @@
 package com.yas.drugproductservice.model
 
-data class Drug(val id: String, val name: String, val unit: String, val publish: Boolean) {
+import com.fasterxml.jackson.annotation.JsonProperty
+
+data class Drug(
+    @JsonProperty("id") val id: String, @JsonProperty("name") val name: String,
+    @JsonProperty("unit") val unit: String, @JsonProperty("publish") val publish: Boolean
+) {
 }
