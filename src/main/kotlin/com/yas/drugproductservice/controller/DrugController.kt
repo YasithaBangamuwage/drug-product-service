@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestController
-import org.springframework.web.client.RestTemplate
 
 @RestController
 @RequestMapping("/api/drugs")
@@ -36,7 +35,7 @@ class DrugController(
     @GetMapping
     fun getDrugs(): Collection<Drug> {
 
-        kafkaTemplate.send("drugProductService","drugs loading !!")
+        kafkaTemplate.send("drugProductService","drugs are loaded into the drug product service")
         return service.getDrugs()
     }
 
